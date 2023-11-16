@@ -30,6 +30,7 @@ public class UserTblController extends HttpServlet {
 		UserTblDAO dao = new UserTblDAO();
 		
 		if(req.getServletPath().equals("/list")) {
+			
 			ArrayList<UserTblDTO> list = dao.selectList();
 			req.setAttribute("list", list);
 			rd = req.getRequestDispatcher("usertbl/list.jsp");
@@ -43,6 +44,7 @@ public class UserTblController extends HttpServlet {
 			
 			
 		}else if(req.getServletPath().equals("/update")){
+			
 			UserTblDTO dto = new UserTblDTO();
 		
 			/* System.out.println(req.getParameter("username"));--먼져 확인해보기 */ 
@@ -52,8 +54,8 @@ public class UserTblController extends HttpServlet {
 			dto.setAddress(req.getParameter("address"));
 			//dao에 update 메소드 만들어보기.
 	
-		
-		rd.forward(req, resp);
+		dao.updatechange(dto);
 	}
+		rd.forward(req, resp);
 	}
 }

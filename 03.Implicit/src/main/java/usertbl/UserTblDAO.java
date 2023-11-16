@@ -85,7 +85,6 @@ public class UserTblDAO {
 				dto.setBirthyear(rs.getInt("BIRTHYEAR"));
 				dto.setMobile(rs.getString("MOBILE"));
 				
-
 			}
 
 		} catch (SQLException e) {
@@ -94,12 +93,28 @@ public class UserTblDAO {
 	return dto;	
 	}
 	
+
+	// 업데이트하기
+	public void updatechange(UserTblDTO dto) {
+		
+		if (!isConnection()) return ;
+
+		try {
+
+			ps = conn.prepareStatement("update usertbl set BIRTHYEAR=?, ADDRESS=?, MOBILE=? where USERNAME = ?");
+			ps.setInt(1, dto.getBirthyear() );
+			ps.setString(2, dto.getAddress() );
+			ps.setString(3, dto.getMobile() );
+			ps.setString(4, dto.getUsername());
+			
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	
 	
-	
-	
-	
-	
+}
 	
 }
 
