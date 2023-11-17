@@ -21,7 +21,7 @@ public class UserTblDAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println(conn.isClosed());
+			
 
 			if (!conn.isClosed())
 				return true;
@@ -34,15 +34,14 @@ public class UserTblDAO {
 		return false;
 
 	}
-	
-	
-	
+
 //전체 목록조회!!!!
-	public ArrayList<UserTblDTO> selectList(){
+	public ArrayList<UserTblDTO> selectList() {
 
-	ArrayList<UserTblDTO> list = new ArrayList<>();
+		ArrayList<UserTblDTO> list = new ArrayList<>();
 
-		if (!isConnection()) return list;
+		if (!isConnection())
+			return list;
 
 		try {
 
@@ -66,11 +65,12 @@ public class UserTblDAO {
 		return list;
 	}
 
-	
-	//데이터1건 조회!!
+	// 데이터1건 조회!!
 	public UserTblDTO selectOne(String name) {
-		UserTblDTO dto= new UserTblDTO();
-		if (!isConnection()) return dto;
+
+		UserTblDTO dto = new UserTblDTO();
+		if (!isConnection())
+			return dto;
 
 		try {
 
@@ -79,46 +79,94 @@ public class UserTblDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 
-			
 				dto.setUsername(rs.getString("USERNAME"));
 				dto.setAddress(rs.getString("ADDRESS"));
 				dto.setBirthyear(rs.getInt("BIRTHYEAR"));
 				dto.setMobile(rs.getString("MOBILE"));
-				
+
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	return dto;	
+		return dto;
 	}
-	
 
-	// 업데이트하기
+	// 데이터 1건 업데이트
+	// 1.통신열기
+	// 2. Statement통신을통해 전송 ->comm객체,sql문
+	// 3. select의 경우 결과를 받기->ResultSet
+
 	public void updatechange(UserTblDTO dto) {
-		
-		if (!isConnection()) return ;
+
+		if (!isConnection() == false)
+			return;
 
 		try {
 
-			ps = conn.prepareStatement("update usertbl set BIRTHYEAR=?, ADDRESS=?, MOBILE=? where USERNAME = ?");
-			ps.setInt(1, dto.getBirthyear() );
-			ps.setString(2, dto.getAddress() );
-			ps.setString(3, dto.getMobile() );
+			ps = conn.prepareStatement(
+					"update usertbl" + " set BIRTHYEAR=?, ADDRESS=?, MOBILE=?" + " where USERNAME = ?");
+			ps.setInt(1, dto.getBirthyear());
+			ps.setString(2, dto.getAddress());
+			ps.setString(3, dto.getMobile());
 			ps.setString(4, dto.getUsername());
-			
-			
-			ps.executeUpdate();
+
+			int result = ps.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+//delete(삭제)
+
+	public void delete(String username) {
+
+		if (isConnection() == false)
+			return;
+
+		try {
+			// String sql=" ";
+			ps = conn.prepareStatement("delete from usertbl where username=?");
+			ps.setString(1, username);
+			int result = ps.executeUpdate();
+			System.out.println();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	
+	//insert
+	
+	public void insert(UserTblDTO dto) {
+
+		if (isConnection() == false)
+			return;
+
+		try {
+
+			ps = conn.prepareStatement("insert into usertbl VALUES(?, ?, ?, ?)");
+			ps.setString(1, dto.getUsername());
+			ps.setInt(2, dto.getBirthyear());
+			ps.setString(3, dto.getAddress());
+			ps.setString(4, dto.getMobile());
+
+			int result = ps.executeUpdate();
+			System.out.println();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	
+	
+	
+
 }
-	
-}
-
-
-
 
 

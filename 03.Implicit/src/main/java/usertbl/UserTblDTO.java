@@ -4,7 +4,7 @@ public class UserTblDTO {
 
 	private String username,  address, mobile;
 	private int birthyear;
-	
+
 	
 	public String getUsername() {
 		return username;
