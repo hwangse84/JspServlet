@@ -1,0 +1,64 @@
+-퍼시스턴스 프레임워크
+- 데이터베이스와 애플리케이션을 연결하여 데이터 베이스 작업을 하고 관리하는 두구 라이브러리 모음을 의미함
+-ORM(Object -Relational Mapping : 관계형 데이터비이스를 자바의 객체 형태로 사용하는 기법
+- 데이터 베이스 연동관리(Connection Pool): 연결, 트랜잭션, sql생성.. 등 처리
+- 쿼리 생성 및 최적화
+- 객체의 상태 변화 추적
+
+-Hibernate, JPA(Java Persistence API), "Mybatis", Entity FrameWork(거의 안씀)
+
+Key:JDBC가 반드시 있어야함
+
+Hibernate : ORM기바느이 퍼시스턴스 프레임워브. 데이터베이스스를 객체지향 프로그래밍 언어와 상호 작용하게 만듬 
+            캐싱, 검증, 내장쿼리, 내장 언어 미 함수 제공 등 다양한 기능이 많음
+            단점 : 1. 복잡성 : 초기설정 복잡, 모호한 개념 매핑설정등이 필요함
+                  2. 오버헤드: 사용하지 않은 기능이 메모리에 올라와이썽 속도저하나 출동일어날수 있음
+                  
+                  
+JPA(Java Persistence API ):표준화 API로 여러 구현체(Hibernate, eclipselink)를 선택사용가능
+                          객체지향적 접근성 : 객체와 데이터베이스 간의 매핑을 지원하여 객체지향적 프로그램가능
+                          어노테이션 지원 : 간단한 어노테이션으로 조인들을 표현가능
+                          java기반의 코드이기 때문에 데이터베이스 종류가 바뀌어도 바로 적용가능
+                          
+                          
+                     단점: 기능제한-> 인터페이스 기반이기 떄문에 오라클등의 고급 데이터베이스의 특성 못다룸
+                               복잡한 퀄리작성하면 jpa의 제약이 엄청나게 크게 다가옴(동적쿼리.....)   
+                               
+                               
+-Mybatis : 개발자가 직접 sql을 작성하고 제어를 하기 떄문에 세밀한 제어나 복잡한 쿼리를 작성할떄 유리
+          SQL과 자바코드가 분리가 되어있어 가독성 높고 유지보수가 쉽다
+          
+          단점 : 초기 설정 까다로움(Hibernate>Mybatis>JPA)
+          JAVA코드로 사용하는 기능에 제약이 있을 수 있음   
+          
+          
+          
+                                                   
+ <마이바티스 세팅하기>
+ 1. maven 저장소에서 "JDBC"&"mybatis"를 pom.xml에 넣어주기(mybatis는 oracledriver(jdbc)를 이용해서 기능 동작
+ 
+   <!--자바에서 oricle 접속용 lib(api) -->
+<dependency>
+    <groupId>com.oracle.database.jdbc</groupId>
+    <artifactId>ojdbc11</artifactId>
+    <version>21.8.0.0</version>
+</dependency>
+
+
+<!--퍼시스턴스 프레임워크 mybatis -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.5.6</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+2. 마이바티스 공식 문서의 설명서를 참고하여 환경설정을 해준다(https:
+ 
