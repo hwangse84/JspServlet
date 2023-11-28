@@ -11,10 +11,32 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MybatisConnection {
 	protected SqlSession sql;
-
-	public MybatisConnection() {
-		System.out.println("생성자");
-		String resource = "mybatis/config.xml";
+    //Enum열거형 데이터타입
+	//상수들을 이용해서 boolean가진 단점을 보완하여 상태정보를표시하느 용도로 많이 사용함
+	//boolean:통신 상태를 표시:통신이 열림,닫힘.
+	//
+	/*
+	 * public enum Connection{ CONNECTION, DISCONNECTION, ING
+	 * 
+	 * }
+	 */
+	
+	public enum DataResource{
+		HANUL("common/hanulconfig.xml"),
+		HR("common/hrconfig.xml");
+		private final String config;
+		private DataResource(String config) {
+			this.config=config;
+		}
+		
+		public String getConfig() {
+			return config;
+		}
+	}
+	
+	public MybatisConnection(DataResource res) {
+		String resource=res.getConfig();
+		
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
