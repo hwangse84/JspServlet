@@ -60,5 +60,11 @@ JPA(Java Persistence API ):표준화 API로 여러 구현체(Hibernate, eclipsel
     <version>1.2</version>
 </dependency>
 
-2. 마이바티스 공식 문서의 설명서를 참고하여 환경설정을 해준다(https:
+2. 마이바티스 공식 문서의 설명서를 참고하여 환경설정을 해준다(https://mybates.org/mubatis-3/ko/getting-started.html)
+      1. mybates-config.xml를 가져와서 붙여넣기(접속 정보등, connection에 이용될 태용+ sqlmapper의 결로등)
+      ..
+      
+      ;;
+      
+      
  

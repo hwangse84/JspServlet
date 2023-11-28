@@ -68,6 +68,7 @@ select 태그는 반드시 id와 resultType을 가진다-->
    <delete id="delete">
    delete from MYBATISTBL where COL1='cons'
    </delete>
+   
 </mapper>
 
 

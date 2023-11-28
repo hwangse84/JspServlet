@@ -86,7 +86,7 @@ public class MybatisController extends HttpServlet {
 			
 		} else if (path.equals("/update.my")) {
 			
-			int result = sql.insert("testmapper.update");
+			int result = sql.update("testmapper.update");
 			//sql.commit();// 반디시 
          //위에서..SqlSession sql = sqlSessionFactory.openSession(true);
 			System.out.println(result);
