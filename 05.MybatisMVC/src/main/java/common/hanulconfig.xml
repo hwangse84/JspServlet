@@ -18,7 +18,9 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mappers/cus_mapper.xml"/>
+    <mapper resource="mappers/hr_mapper.xml"/>
+    <mapper resource="mappers/hanul_mapper.xml"/>
+   
   
   </mappers>
   

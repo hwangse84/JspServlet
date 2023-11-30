@@ -34,8 +34,8 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="list.cu">고객관리</a></li>
                         <li class="nav-item"><a class="nav-link" href="list.hr">HR조회</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">JSTL연습</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">혼자 해보기</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.jstl">JSTL연습</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.sg">혼자 해보기</a></li>
                     </ul>
                 </div>
             </div>
