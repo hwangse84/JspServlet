@@ -80,6 +80,9 @@
         <h1 class="modal-title fs-5" id="insertModalLabel">고객추가</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
+      
+      
 	      <form action="insert.cu"  method="get">
       <div class="modal-body">
 	      

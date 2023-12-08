@@ -7,8 +7,31 @@
 
 <section class="page-section">
 	<div class="container">
+
+	<form action="list.hr" method="get">
+	<div class="row g-3 align-items-center">
 	
-	
+  <div class="col-auto">
+  
+               <select class="form-select" aria-label="Default select example"name ="option">
+  <option value="all" ${option eq 'all'? 'selected' : ''}>전체</option>
+  <option value="name" ${option eq 'name'? 'selected' : ''}>이름</option>
+  <option value="department_name" ${option eq 'department_name'  ?  ' selected' : ''}>부서명</option>
+  <option value="jop-title" ${option eq 'job_title'? 'selected' : ''}>업무명</option>
+ 
+</select>
+                 
+  </div>
+  <div class="col-auto">
+    <input type="text"  class="form-control" name="keyword" placeholder="검색어를 입력하세요" value="${keyword}"/>
+  </div>
+  
+  <div class="col-auto">
+  <input type="submit" value="검색" class="btn btn-primary"/>
+   
+  </div>
+</div>
+</form>
 
 		<table class="table table-striped">
 
@@ -41,9 +64,9 @@
 		</c:when>
 		<c:otherwise>
 		
-		       <c:forEach items="${list}" var="vo" varStatus="i">
+		       <c:forEach items="${list}" var="vo" >
 					<tr>
-						<th scope="row">${i.index+1}</th>
+		
 						<!-- 0부터 나오므로 1더함 -->
 						<td>${vo.employee_id}</td>
 						<td>${vo.name}</td>

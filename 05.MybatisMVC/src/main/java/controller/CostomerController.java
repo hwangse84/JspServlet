@@ -42,7 +42,7 @@ public class CostomerController extends HttpServlet {
 			vo.setName(req.getParameter("name"));
 			vo.setGender(req.getParameter("gender"));
 			vo.setPhone(req.getParameter("phone"));
-			dao.insert(vo);
+			dao.insert(vo);			
 			resp.sendRedirect("list.cu");
 
 		} else if (path.equals("update.cu")) {

@@ -24,7 +24,7 @@
    
        
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top m-3" id="mainNav">
             <div class="container px-4 px-lg-5">
             	<a class="navbar-brand" href="#page-top">MybatisMVC</a>
             	
@@ -36,6 +36,16 @@
                         <li class="nav-item"><a class="nav-link" href="list.hr">HR조회</a></li>
                         <li class="nav-item"><a class="nav-link" href="list.jstl">JSTL연습</a></li>
                         <li class="nav-item"><a class="nav-link" href="list.sg">혼자 해보기</a></li>
+                        <c:if test="${empty logininfo}">
+                        <li class="nav-item"><a class="nav-info m-3" href="loginpage.me">로그인</a></li>
+                        <li class="nav-item"><a class="nav-info" href="joinpage.me">회원가입</a></li>
+                        </c:if>
+                        
+                        <c:if test="${not empty logininfo}">
+                        <li class="nav-item"><span class="nav-link">${logininfo.name}님 환영합니다</span>
+                        <a class="nav-info m-3" href="logout.me">로그아웃</a></li>
+                       
+                        </c:if>
                     </ul>
                 </div>
             </div>

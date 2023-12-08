@@ -1,5 +1,6 @@
 package customer;
 
+import java.util.HashMap;
 import java.util.List;
 
 import common.MybatisConnection;
@@ -11,8 +12,9 @@ public class HrDAO extends MybatisConnection{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<HrVO> select() {
-		return sql.selectList("hr.select");
+	public List<HrVO> select(HashMap<String, String> map){
+		return sql.selectList("hr.select",map);
+		
 
 	}
 	
